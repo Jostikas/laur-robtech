@@ -236,6 +236,14 @@
     <origin xyz="${.707*width+0.04} 0 ${.707*width}"/>
   </joint>
 
+  <link name="eye">
+  </link>
+  <joint name="eye_link" type="fixed">
+    <parent link="box" />
+    <child link="eye" />
+    <origin rpy="${-0.5*pi} 0 ${-0.5*pi}" />
+  </joint>
+
   <link name="base_footprint">
   </link>
 
