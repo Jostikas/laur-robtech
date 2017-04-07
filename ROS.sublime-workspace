@@ -1,0 +1,326 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mouse",
+				"mouse_event"
+			],
+			[
+				"BTN",
+				"BTN_EXTRA"
+			],
+			[
+				"REL",
+				"REL_HWHEEL"
+			],
+			[
+				"ros",
+				"ros_message"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/mouse_driver/src/mouse_driver.cpp",
+			"settings":
+			{
+				"buffer_size": 11465,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/griffin_powermate/include/griffin_powermate/griffin_powermate.h",
+			"settings":
+			{
+				"buffer_size": 4813,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/mouse_driver/include/mouse_driver/mouse_driver.h",
+			"settings":
+			{
+				"buffer_size": 4609,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/terminaator/laur-robtech/src",
+		"/home/terminaator/laur-robtech/src/griffin_powermate",
+		"/home/terminaator/laur-robtech/src/griffin_powermate/include",
+		"/home/terminaator/laur-robtech/src/griffin_powermate/include/griffin_powermate",
+		"/home/terminaator/laur-robtech/src/griffin_powermate/msg",
+		"/home/terminaator/laur-robtech/src/griffin_powermate/src",
+		"/home/terminaator/laur-robtech/src/mouse_driver",
+		"/home/terminaator/laur-robtech/src/mouse_driver/include",
+		"/home/terminaator/laur-robtech/src/mouse_driver/include/mouse_driver",
+		"/home/terminaator/laur-robtech/src/mouse_driver/msg",
+		"/home/terminaator/laur-robtech/src/mouse_driver/src"
+	],
+	"file_history":
+	[
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"PowerMateEvent",
+			"mouse_event",
+			"spinm",
+			"closemo",
+			"powermate",
+			"griffin",
+			"griffin_powermate",
+			"powermate",
+			"powermate_path",
+			"powermate",
+			"PowerMate"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"mouse_driver",
+			"the_driver",
+			"mouse_driver_path",
+			"mouse_driver"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/mouse_driver/src/mouse_driver.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6445,
+								6445
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2472.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/griffin_powermate/include/griffin_powermate/griffin_powermate.h",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4813,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/mouse_driver/include/mouse_driver/mouse_driver.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2640,
+								2640
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ROS.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 223.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
