@@ -138,20 +138,29 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME}_moveGroup src/planning_tutorial_moveGroup.cpp)
+add_executable(${PROJECT_NAME}_moveGroup_pr2 src/planning_tutorial_moveGroup_pr2.cpp)
+add_executable(${PROJECT_NAME}_moveGroup_sia5d src/planning_tutorial_moveGroup_sia5d.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-set_target_properties(${PROJECT_NAME}_moveGroup PROPERTIES OUTPUT_NAME moveGroup PREFIX "")
+set_target_properties(${PROJECT_NAME}_moveGroup_pr2 PROPERTIES OUTPUT_NAME pr2 PREFIX "")
+set_target_properties(${PROJECT_NAME}_moveGroup_sia5d PROPERTIES OUTPUT_NAME sia5d PREFIX "")
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(${PROJECT_NAME}_moveGroup ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_moveGroup_pr2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_moveGroup_sia5d ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}_moveGroup
+target_link_libraries(${PROJECT_NAME}_moveGroup_pr2
+  ${catkin_LIBRARIES}
+  ${roscpp_LIBRARIES}
+#   ${rospy_LIBRARIES}
+  ${std_msgs_LIBRARIES}
+)
+target_link_libraries(${PROJECT_NAME}_moveGroup_sia5d
   ${catkin_LIBRARIES}
   ${roscpp_LIBRARIES}
 #   ${rospy_LIBRARIES}

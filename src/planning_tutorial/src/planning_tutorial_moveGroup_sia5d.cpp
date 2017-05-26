@@ -3,6 +3,8 @@
 #include <moveit_msgs/DisplayRobotState.h>
 #include <moveit_msgs/DisplayTrajectory.h>
 #include <ros/ros.h>
+#include <moveit/robot_trajectory/robot_trajectory.h>
+#include <moveit/trajectory_processing/iterative_time_parameterization.h>
 
 const bool revizualise = true;
 
@@ -26,12 +28,8 @@ int main(int argc, char **argv) {
 		ROS_INFO("Target: %s", target.c_str());
 	}
 	group.setNamedTarget("touch_ground");
-	//group.setOrientationTarget(0, 0, 1, 0);
-	//geometry_msgs::Pose target_pose1 = group.getPoseTarget().pose;
-	//group.setPoseTarget(target_pose1);
 
 	moveit::planning_interface::MoveGroup::Plan my_plan;
-	ROS_INFO("HERE!");
 	bool success = group.move();
 
 	ROS_INFO("Visualizing plan 1 (pose goal) %s",success?"":"FAILED");
@@ -42,60 +40,51 @@ int main(int argc, char **argv) {
 	target_pose1.orientation.x = 1;
 	target_pose1.orientation.y = 0;
 	target_pose1.orientation.z = 0;
+	target_pose1.position.x -= 0.3;
+	target_pose1.position.z = 0;
 	group.setPoseTarget(target_pose1);
 	success = group.move();
 
-	ROS_INFO("Pointing %s", success ? "succeeded" : "FAILED");
-	sleep(2.0);
+	ROS_INFO("Pointing to the ground %s", success ? "succeeded" : "FAILED");
+	sleep(1);
 
 	geometry_msgs::Pose target_pose2 = target_pose1;
-	target_pose2.position.x;
-	target_pose2.position.y += 0.1;
+	target_pose2.position.x += 0.2;
+	target_pose2.position.y += 0.2;
 
 	geometry_msgs::Pose target_pose3 = target_pose1;
-	target_pose2.position.x += 0.1;
-	target_pose2.position.y -= 0.1;
+	target_pose3.position.x += 0.2;
+	target_pose3.position.y -= 0.2;
 
 	std::vector<geometry_msgs::Pose> triangle;
-	triangle.push_back(target_pose1);
 	triangle.push_back(target_pose2);
 	triangle.push_back(target_pose3);
-	int corner = 1;
+	triangle.push_back(target_pose1);
 
-	group.setPoseTarget(triangle[1]);
-	group.move();
-	sleep(5);
-	group.setPoseTarget(triangle[2]);
-	group.move();
-	sleep(5);
-	group.setPoseTarget(triangle[0]);
-	group.move();
-	sleep(5);
-	group.setPoseTarget(triangle[1]);
-	group.move();
-	sleep(5);
-	group.setPoseTarget(triangle[2]);
-	group.move();
-	sleep(5);
-	group.setPoseTarget(triangle[0]);
-	group.move();
+	moveit_msgs::RobotTrajectory trajectory;
+	double frac = group.computeCartesianPath(triangle,
+								0.01,
+								0.0,
+								trajectory);
+	ROS_INFO("Planned cartesian path, %f", frac);
 	sleep(5);
 
-	// while (true)
-	// {
-	//     ROS_INFO("Corner %d", corner);
-	//     group.setPoseTarget(triangle[corner++]);
-	//     group.move();
-	//     corner = corner % 3;
-	// 	sleep(5);
-	// }
+	/* Example for actually working with the trajectory returned from computeCartesianPath:
+	https://groups.google.com/d/msg/moveit-users/x5FwalM5ruk/WIj2ruYs4RwJ
+	*/
+	/*
+	robot_trajectory::RobotTrajectory rt(group.getCurrentState()->getRobotModel(), "sia5d");
+	rt.setRobotTrajectoryMsg(*group.getCurrentState(), trajectory);
+	trajectory_processing::IterativeParabolicTimeParameterization iptp;
+	success = iptp.computeTimeStamps(rt);
+	ROS_INFO("Computed time stamp %s", success ? "SUCCEEDED" : "FAILED");
+	rt.getRobotTrajectoryMsg(trajectory);
+	*/
+	my_plan.trajectory_ = trajectory;
 
-	ROS_INFO("Visualizing plan 1 (again)");
-	display_trajectory.trajectory_start = my_plan.start_state_;
-	display_trajectory.trajectory.push_back(my_plan.trajectory_);
-	display_publisher.publish(display_trajectory);
-	/* Sleep to give Rviz time to visualize the plan. */
-	//sleep(5.0);
+	ROS_INFO("Excecuting");
+	group.execute(my_plan);
+
 	ROS_INFO("Snooze!");
 
 	return 0;
