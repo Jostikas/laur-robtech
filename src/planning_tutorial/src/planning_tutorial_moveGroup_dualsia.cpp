@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
 	sleep(5);
 
 	ROS_INFO("Aping Michelangelo");
-	both_g.setNamedTarget("creation_adam");
+	both_g.setNamedTarget("twiddle");
 	both_g.move();
 	sleep(5);
 

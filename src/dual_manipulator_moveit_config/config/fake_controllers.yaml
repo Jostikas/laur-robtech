@@ -10,13 +10,12 @@ controller_list:
       - left_joint_t
   - name: fake_right_manip_controller
     joints:
-      - right_joint_s
-      - right_joint_l
-      - right_joint_e
-      - right_joint_u
-      - right_joint_r
-      - right_joint_b
-      - right_joint_t
+      - right_shoulder_pan_joint
+      - right_shoulder_lift_joint
+      - right_elbow_joint
+      - right_wrist_1_joint
+      - right_wrist_2_joint
+      - right_wrist_3_joint
   - name: fake_both_manip_controller
     joints:
       - left_joint_s
@@ -26,10 +25,9 @@ controller_list:
       - left_joint_r
       - left_joint_b
       - left_joint_t
-      - right_joint_s
-      - right_joint_l
-      - right_joint_e
-      - right_joint_u
-      - right_joint_r
-      - right_joint_b
-      - right_joint_t
+      - right_shoulder_pan_joint
+      - right_shoulder_lift_joint
+      - right_elbow_joint
+      - right_wrist_1_joint
+      - right_wrist_2_joint
+      - right_wrist_3_joint
