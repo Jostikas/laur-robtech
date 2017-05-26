@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<!--Generates a urdf from the macro in sia5_macro.xacro -->
+
+<robot name="dual_manip" xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<property name="deg" value="0.017453293" /> <!--degrees to radians-->
+
+	<xacro:include filename="$(find motoman_sia5d_support)/urdf/sia5d_macro.xacro"/>
+	<xacro:motoman_sia5d prefix="left_"/>
+	<xacro:motoman_sia5d prefix="right_"/>
+
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<box size="0.5 1.3 0.2" />
+			</geometry>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="0.5 1.3 0.2" />
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_link-left" type="fixed" >
+		<origin xyz="0 0.5 0.1" rpy="0 0 0"/>
+		<parent link="base_link" />
+		<child link="left_base_link" />
+  	</joint>
+
+	<joint name="base_link-right" type="fixed" >
+		<origin xyz="0 -0.5 0.1" rpy="0 0 0"/>
+		<parent link="base_link" />
+		<child link="right_base_link" />
+  	</joint>
+</robot>

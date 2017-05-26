@@ -1,22 +1,18 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(planning_tutorial)
+project(dual_manipulator_support)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
-add_definitions(-std=c++11)
+# add_definitions(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-	roscpp
-	rospy
-	std_msgs
-	moveit_core
-	moveit_ros_planning_interface
-	)
+find_package(catkin REQUIRED)
 
 ## System dependencies are found with CMake's conventions
-# find_package(Eigen REQUIRED COMPONENTS system)
+# find_package(Boost REQUIRED COMPONENTS system)
+find_package(roscpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -106,9 +102,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES planning_tutorial
+#  LIBRARIES dual_manipulator_support
 #  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS roscpp rospy std_msgs
+#  DEPENDS roscpp std_msgs
 )
 
 ###########
@@ -118,16 +114,15 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-# TODO: Check names of system library include directories (roscpp, rospy, std_msgs)
+# TODO: Check names of system library include directories (roscpp, std_msgs)
 include_directories(
   ${roscpp_INCLUDE_DIRS}
-  ${rospy_INCLUDE_DIRS}
   ${std_msgs_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/planning_tutorial.cpp
+#   src/${PROJECT_NAME}/dual_manipulator_support.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -138,44 +133,24 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME}_moveGroup_pr2 src/planning_tutorial_moveGroup_pr2.cpp)
-add_executable(${PROJECT_NAME}_moveGroup_sia5d src/planning_tutorial_moveGroup_sia5d.cpp)
-add_executable(${PROJECT_NAME}_moveGroup_dualsia src/planning_tutorial_moveGroup_dualsia.cpp)
+# add_executable(${PROJECT_NAME}_node src/dual_manipulator_support_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-set_target_properties(${PROJECT_NAME}_moveGroup_pr2 PROPERTIES OUTPUT_NAME pr2 PREFIX "")
-set_target_properties(${PROJECT_NAME}_moveGroup_sia5d PROPERTIES OUTPUT_NAME sia5d PREFIX "")
-set_target_properties(${PROJECT_NAME}_moveGroup_dualsia PROPERTIES OUTPUT_NAME dualsia PREFIX "")
+# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(${PROJECT_NAME}_moveGroup_pr2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(${PROJECT_NAME}_moveGroup_sia5d ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(${PROJECT_NAME}_moveGroup_dualsia ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}_moveGroup_pr2
-  ${catkin_LIBRARIES}
-  ${roscpp_LIBRARIES}
-#   ${rospy_LIBRARIES}
-  ${std_msgs_LIBRARIES}
-)
-target_link_libraries(${PROJECT_NAME}_moveGroup_sia5d
-  ${catkin_LIBRARIES}
-  ${roscpp_LIBRARIES}
-#   ${rospy_LIBRARIES}
-  ${std_msgs_LIBRARIES}
-)
-
-target_link_libraries(${PROJECT_NAME}_moveGroup_dualsia
-  ${catkin_LIBRARIES}
-  ${roscpp_LIBRARIES}
-#   ${rospy_LIBRARIES}
-  ${std_msgs_LIBRARIES}
-)
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+#   ${roscpp_LIBRARIES}
+#   ${std_msgs_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -217,7 +192,7 @@ target_link_libraries(${PROJECT_NAME}_moveGroup_dualsia
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_planning_tutorial.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_dual_manipulator_support.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
