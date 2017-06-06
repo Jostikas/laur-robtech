@@ -62,12 +62,25 @@ int main(int argc, char **argv) {
 	triangle.push_back(target_pose1);
 
 	moveit_msgs::RobotTrajectory trajectory;
+	for (int i=0;i<4;i++)
+	{
+		ROS_INFO("In for: %d", i);
+	    double frac = group.computeCartesianPath(triangle,
+						     0.01,
+						     0.0,
+						     trajectory);
+	    ROS_INFO("Planned cartesian path, %f", frac);
+	    my_plan.trajectory_ = trajectory;
+
+	    ROS_INFO("Excecuting");
+	    group.execute(my_plan);
+	}
+	
 	double frac = group.computeCartesianPath(triangle,
 								0.01,
 								0.0,
 								trajectory);
 	ROS_INFO("Planned cartesian path, %f", frac);
-	sleep(5);
 
 	/* Example for actually working with the trajectory returned from computeCartesianPath:
 	https://groups.google.com/d/msg/moveit-users/x5FwalM5ruk/WIj2ruYs4RwJ
