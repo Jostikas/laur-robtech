@@ -1,0 +1,10 @@
+<launch>
+<!-- set up the cosys -->
+ <node pkg="tf" type="static_transform_publisher" name="my_frame" 
+    args="0.0 0.0 0.0 0 0 0 1 world marker_frame 1" />
+<!-- start rviz -->
+  <node pkg="rviz" type="rviz" name="my_rviz" 
+    args="-d $(find exam_marker)/launch/demo.rviz"/>
+<!-- start node -->
+  <node pkg="exam_marker" type="exam_marker_node" name="marker_demo" />
+</launch>
